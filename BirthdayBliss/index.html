@@ -3,7 +3,7 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
-  <title>Birthday Bliss - Countdown</title>
+  <title>Birthday Bliss - Welcome</title>
   <style>
     body {
       margin: 0;
@@ -14,21 +14,18 @@
       flex-direction: column;
       min-height: 100vh;
       align-items: center;
-      justify-content: flex-start;
+      justify-content: center;
       padding: 30px 20px;
       text-align: center;
-    }
-
-    header {
-      width: 100%;
-      max-width: 900px;
-      margin-bottom: 30px;
     }
 
     .banner {
       background: url('https://ik.imagekit.io/kozygc3l3/WhatsApp%20Image%202025-05-27%20at%2008.13.26_20ab4cee.jpg?updatedAt=1749482560470') no-repeat center/cover;
       border-radius: 20px;
       height: 200px;
+      width: 100%;
+      max-width: 900px;
+      margin-bottom: 30px;
       box-shadow: 0 8px 20px rgba(255, 105, 180, 0.4);
       display: flex;
       align-items: center;
@@ -42,114 +39,72 @@
       margin: 0;
     }
 
-    main {
-      max-width: 700px;
+    .card {
       background: white;
       border-radius: 20px;
       padding: 30px 40px;
       box-shadow: 0 6px 20px rgba(255, 105, 180, 0.15);
+      max-width: 700px;
     }
 
-    main h2 {
+    .card h2 {
       font-size: 2rem;
       margin-bottom: 15px;
       color: #d81b60;
     }
 
-    main p {
+    .card p {
       font-size: 1.2rem;
-      margin-bottom: 35px;
       line-height: 1.5;
       color: #5c1037;
     }
 
-    #countdown {
-      font-size: 3rem;
-      font-weight: 700;
-      color: #d81b60;
-      margin-bottom: 30px;
+    .btn {
+      margin-top: 30px;
     }
 
-    #manualRedirect {
-      display: none;
-      font-size: 1.2rem;
-      margin-top: 20px;
-    }
-
-    #manualRedirect a {
+    .btn a {
       background-color: #d81b60;
       color: white;
-      padding: 12px 24px;
+      padding: 14px 30px;
       border-radius: 30px;
       text-decoration: none;
       font-weight: bold;
+      font-size: 1.1rem;
       box-shadow: 0 6px 14px rgba(216, 27, 96, 0.3);
       transition: 0.3s;
     }
 
-    #manualRedirect a:hover {
+    .btn a:hover {
       background-color: #b31250;
       box-shadow: 0 8px 20px rgba(179, 18, 80, 0.4);
     }
 
     footer {
-      margin-top: auto;
+      margin-top: 40px;
       font-size: 0.9rem;
       color: #b34070;
-      padding: 20px 0;
     }
   </style>
 </head>
 <body>
 
-  <header>
-    <div class="banner">
-      <h1>Happy Birthday, Devi Ji! 🎉</h1>
+  <div class="banner">
+    <h1>Happy Birthday, Devi Ji! 🎉</h1>
+  </div>
+
+  <div class="card">
+    <h2>Welcome to Birthday Bliss</h2>
+    <p>A little surprise awaits you! When you're ready, click the button below to begin your magical journey 🎁✨</p>
+
+    <div class="btn">
+      <a href="surprise.html">Open Your Surprise 🎀</a>
     </div>
-  </header>
-
-  <main>
-    <h2>Countdown to Your Surprise</h2>
-    <p>The wait is almost over. When the clock hits zero, click the button to reveal the magic!</p>
-
-    <div id="countdown">Loading...</div>
-
-    <div id="manualRedirect">
-      <a href="surprise.html">🎁 Open Your Surprise</a>
-    </div>
-  </main>
+  </div>
 
   <footer>
-    Created with ❤️ by Ganduuu Naman
+    Crafted with ❤️ by Ganduuu Naman
   </footer>
-
-  <script>
-    const countdownEl = document.getElementById("countdown");
-    const redirectEl = document.getElementById("manualRedirect");
-
-    const targetUTC = new Date(Date.UTC(2025, 5, 9, 18, 30, 0)); // June 10, 2025 IST
-
-    function updateCountdown() {
-      const now = new Date().getTime();
-      const distance = targetUTC - now;
-
-      if (distance > 0) {
-        const d = Math.floor(distance / (1000 * 60 * 60 * 24));
-        const h = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-        const m = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-        const s = Math.floor((distance % (1000 * 60)) / 1000);
-
-        countdownEl.textContent = `${d}d ${h}h ${m}m ${s}s`;
-      } else {
-        clearInterval(timer);
-        countdownEl.textContent = "It's time! 🥳";
-        redirectEl.style.display = "block";
-      }
-    }
-
-    updateCountdown();
-    const timer = setInterval(updateCountdown, 1000);
-  </script>
 
 </body>
 </html>
