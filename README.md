@@ -40,8 +40,10 @@ Tools and technologies I may use here:
 ## 📁 Structure
 
 Idea-Hatch/
-├── about.html
 ├── index.html
+├── about.html
 ├── projects.html
-├── syle.css
-├── README.md
+├── style/
+│   └── style.css
+├── scripts/
+│   └── main.js

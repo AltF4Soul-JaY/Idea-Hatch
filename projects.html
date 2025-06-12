@@ -5,33 +5,37 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Projects | AltF4Soul_JaY</title>
   <link rel="stylesheet" href="style/style.css" />
+  <script defer src="scripts/main.js"></script>
 </head>
 <body>
 
   <header>
     <div class="logo"><strong>Idea Hatch</strong></div>
     <nav>
-      <a href="index.html">Home</a>
-      <a href="projects.html">Projects</a>
-      <a href="about.html">About</a>
+      <a href="#" onclick="goTo('index.html')">Home</a>
+      <a href="#" onclick="goTo('projects.html')">Projects</a>
+      <a href="#" onclick="goTo('about.html')">About</a>
     </nav>
   </header>
 
   <section class="hero">
-    <h1>My Projects</h1>
+    <h1>Projects</h1>
     <div class="project-card">
-      <h2>Portfolio Website</h2>
-      <p>Built using HTML, CSS, and deployed using Vercel. My first live project.</p>
+      <h2>Personal Portfolio</h2>
+      <p>A portfolio of my work, hosted on Vercel with HTML, CSS, and JavaScript.</p>
     </div>
     <div class="project-card">
       <h2>Idea Hatch</h2>
-      <p>A sandbox environment to test and deploy new ideas. Ongoing experiments and features are added here regularly.</p>
+      <p>My lab for experimentation — a living digital sketchpad for coding creativity.</p>
     </div>
+    <div id="greeting" class="greeting"></div>
   </section>
 
   <footer>
-    © 2025 AltF4Soul_JaY | More coming soon...
+    © <span id="year"></span> AltF4Soul_JaY | Projects in progress 🔧
   </footer>
+
+  <div class="theme-toggle" onclick="toggleTheme()">Toggle Theme</div>
 
 </body>
 </html>

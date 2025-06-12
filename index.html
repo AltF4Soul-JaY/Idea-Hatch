@@ -3,28 +3,32 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Welcome | AltF4Soul_JaY</title>
+  <title>Home | AltF4Soul_JaY</title>
   <link rel="stylesheet" href="style/style.css" />
+  <script defer src="scripts/main.js"></script>
 </head>
 <body>
 
   <header>
     <div class="logo"><strong>Idea Hatch</strong></div>
     <nav>
-      <a href="index.html">Home</a>
-      <a href="projects.html">Projects</a>
-      <a href="about.html">About</a>
+      <a href="#" onclick="goTo('index.html')">Home</a>
+      <a href="#" onclick="goTo('projects.html')">Projects</a>
+      <a href="#" onclick="goTo('about.html')">About</a>
     </nav>
   </header>
 
   <section class="hero">
-    <h1>Hey, I'm Naman</h1>
-    <p>Welcome to my project hub – testing, building, and deploying ideas under the name <strong>AltF4Soul_JaY</strong>.</p>
+    <h1>Welcome to Idea Hatch</h1>
+    <p>This is the place where AltF4Soul_JaY (Naman) experiments with new ideas and builds them live.</p>
+    <div id="greeting" class="greeting"></div>
   </section>
 
   <footer>
-    © 2025 AltF4Soul_JaY | Deployed with ❤️ on Vercel
+    © <span id="year"></span> AltF4Soul_JaY | Built with 💡 and deployed on Vercel
   </footer>
+
+  <div class="theme-toggle" onclick="toggleTheme()">Toggle Theme</div>
 
 </body>
 </html>
