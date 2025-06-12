@@ -1,4 +1,4 @@
-/* Base Styles */
+/* Base */
 body {
   margin: 0;
   font-family: 'Segoe UI', sans-serif;
@@ -14,14 +14,12 @@ header {
   justify-content: space-between;
   align-items: center;
 }
-
 nav a {
   color: #f1f5f9;
   margin-left: 1rem;
   text-decoration: none;
   font-weight: bold;
 }
-
 nav a:hover {
   text-decoration: underline;
 }
@@ -31,20 +29,38 @@ nav a:hover {
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center;
-  height: 80vh;
+  padding: 2rem 1rem;
   text-align: center;
-  padding: 0 1rem;
 }
-
 .hero h1 {
   font-size: 3rem;
-  margin: 0.5rem 0;
+  margin: 1rem 0;
 }
-
 .hero p {
   font-size: 1.2rem;
   max-width: 600px;
+}
+
+/* About */
+.about-bio {
+  font-size: 1.1rem;
+  max-width: 600px;
+  line-height: 1.6;
+}
+
+/* Projects */
+.project-card {
+  background: #1e293b;
+  border-radius: 12px;
+  padding: 1rem;
+  margin: 1rem auto;
+  max-width: 600px;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+  transition: 0.3s;
+}
+.project-card:hover {
+  transform: scale(1.02);
+  background: #334155;
 }
 
 /* Footer */
