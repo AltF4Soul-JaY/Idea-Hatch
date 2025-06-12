@@ -4,7 +4,7 @@
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1" />
   <title>Birthday Bliss - Countdown</title>
-  <style>    
+  <style>
     body {
       margin: 0;
       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
@@ -71,15 +71,25 @@
     }
 
     #manualRedirect {
-      font-size: 1.1rem;
-      color: #b3004b;
       display: none;
+      font-size: 1.2rem;
+      margin-top: 20px;
     }
 
     #manualRedirect a {
-      color: #d81b60;
+      background-color: #d81b60;
+      color: white;
+      padding: 12px 24px;
+      border-radius: 30px;
+      text-decoration: none;
       font-weight: bold;
-      text-decoration: underline;
+      box-shadow: 0 6px 14px rgba(216, 27, 96, 0.3);
+      transition: 0.3s;
+    }
+
+    #manualRedirect a:hover {
+      background-color: #b31250;
+      box-shadow: 0 8px 20px rgba(179, 18, 80, 0.4);
     }
 
     footer {
@@ -99,42 +109,41 @@
   </header>
 
   <main>
-    <h2>Countdown to Your Special Moment</h2>
-    <p>Dear Devi Ji, the moment we've been waiting for is almost here. Let's count down together until your special day!</p>
+    <h2>Countdown to Your Surprise</h2>
+    <p>The wait is almost over. When the clock hits zero, click the button to reveal the magic!</p>
 
     <div id="countdown">Loading...</div>
-    <p id="manualRedirect">Not redirected? <a href="surprise.html">Click here for your surprise 🎁</a></p>
+
+    <div id="manualRedirect">
+      <a href="surprise.html">🎁 Open Your Surprise</a>
+    </div>
   </main>
 
   <footer>
-    Made with ❤️ by Ganduuu Naman
+    Created with ❤️ by Ganduuu Naman
   </footer>
 
   <script>
-    const countdownElement = document.getElementById("countdown");
-    const manualRedirect = document.getElementById("manualRedirect");
+    const countdownEl = document.getElementById("countdown");
+    const redirectEl = document.getElementById("manualRedirect");
 
-    // Target: June 10, 2025 00:00 IST = June 9, 18:30 UTC
-    const targetDateUTC = new Date(Date.UTC(2025, 5, 9, 18, 30, 0));
+    const targetUTC = new Date(Date.UTC(2025, 5, 9, 18, 30, 0)); // June 10, 2025 IST
 
     function updateCountdown() {
       const now = new Date().getTime();
-      const distance = targetDateUTC.getTime() - now;
+      const distance = targetUTC - now;
 
       if (distance > 0) {
-        const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-        const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-        const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-        const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+        const d = Math.floor(distance / (1000 * 60 * 60 * 24));
+        const h = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const m = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        const s = Math.floor((distance % (1000 * 60)) / 1000);
 
-        countdownElement.textContent = `${days}d ${hours}h ${minutes}m ${seconds}s`;
+        countdownEl.textContent = `${d}d ${h}h ${m}m ${s}s`;
       } else {
         clearInterval(timer);
-        countdownElement.textContent = "Redirecting to your surprise...";
-        manualRedirect.style.display = "block";
-        setTimeout(() => {
-          window.location.href = "surprise.html";
-        }, 2000);
+        countdownEl.textContent = "It's time! 🥳";
+        redirectEl.style.display = "block";
       }
     }
 
