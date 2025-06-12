@@ -1,151 +1,146 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1" />
-<title>Birthday Bliss - Countdown</title>
-<style>    
-  body {
-    margin: 0;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    background: linear-gradient(135deg, #fcefee, #f9d1d9);
-    color: #4a0033;
-    display: flex;
-    flex-direction: column;
-    min-height: 100vh;
-    align-items: center;
-    justify-content: flex-start;
-    padding: 30px 20px;
-    text-align: center;
-  }
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>Birthday Bliss - Countdown</title>
+  <style>    
+    body {
+      margin: 0;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+      background: linear-gradient(135deg, #fcefee, #f9d1d9);
+      color: #4a0033;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+      align-items: center;
+      justify-content: flex-start;
+      padding: 30px 20px;
+      text-align: center;
+    }
 
-  header {
-    width: 100%;
-    max-width: 900px;
-    margin-bottom: 30px;
-  }
+    header {
+      width: 100%;
+      max-width: 900px;
+      margin-bottom: 30px;
+    }
 
-  .banner {
-    background: url('https://ik.imagekit.io/kozygc3l3/WhatsApp%20Image%202025-05-27%20at%2008.13.26_20ab4cee.jpg?updatedAt=1749482560470') no-repeat center/cover;
-    border-radius: 20px;
-    height: 200px;
-    box-shadow: 0 8px 20px rgba(255, 105, 180, 0.4);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
+    .banner {
+      background: url('https://ik.imagekit.io/kozygc3l3/WhatsApp%20Image%202025-05-27%20at%2008.13.26_20ab4cee.jpg?updatedAt=1749482560470') no-repeat center/cover;
+      border-radius: 20px;
+      height: 200px;
+      box-shadow: 0 8px 20px rgba(255, 105, 180, 0.4);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+    }
 
-  .banner h1 {
-    color: white;
-    font-size: 3rem;
-    text-shadow: 2px 2px 8px #a0004d;
-    margin: 0;
-  }
+    .banner h1 {
+      color: white;
+      font-size: 3rem;
+      text-shadow: 2px 2px 8px #a0004d;
+      margin: 0;
+    }
 
-  main {
-    max-width: 700px;
-    background: white;
-    border-radius: 20px;
-    padding: 30px 40px;
-    box-shadow: 0 6px 20px rgba(255, 105, 180, 0.15);
-  }
+    main {
+      max-width: 700px;
+      background: white;
+      border-radius: 20px;
+      padding: 30px 40px;
+      box-shadow: 0 6px 20px rgba(255, 105, 180, 0.15);
+    }
 
-  main h2 {
-    font-size: 2rem;
-    margin-bottom: 15px;
-    color: #d81b60;
-  }
+    main h2 {
+      font-size: 2rem;
+      margin-bottom: 15px;
+      color: #d81b60;
+    }
 
-  main p {
-    font-size: 1.2rem;
-    margin-bottom: 35px;
-    line-height: 1.5;
-    color: #5c1037;
-  }
+    main p {
+      font-size: 1.2rem;
+      margin-bottom: 35px;
+      line-height: 1.5;
+      color: #5c1037;
+    }
 
-  #countdown {
-    font-size: 3rem;
-    font-weight: 700;
-    color: #d81b60;
-    margin-bottom: 30px;
-  }
+    #countdown {
+      font-size: 3rem;
+      font-weight: 700;
+      color: #d81b60;
+      margin-bottom: 30px;
+    }
 
-  #surpriseBtn {
-    display: none;
-    font-size: 1.4rem;
-    padding: 14px 32px;
-    border: none;
-    border-radius: 30px;
-    background-color: #d81b60;
-    color: white;
-    cursor: pointer;
-    box-shadow: 0 6px 12px rgba(216, 27, 96, 0.7);
-    transition: background-color 0.3s ease;
-    text-decoration: none;
-  }
+    #manualRedirect {
+      font-size: 1.1rem;
+      color: #b3004b;
+      display: none;
+    }
 
-  #surpriseBtn:hover {
-    background-color: #a31547;
-  }
+    #manualRedirect a {
+      color: #d81b60;
+      font-weight: bold;
+      text-decoration: underline;
+    }
 
-  footer {
-    margin-top: auto;
-    font-size: 0.9rem;
-    color: #b34070;
-    padding: 20px 0;
-  }
-</style>
+    footer {
+      margin-top: auto;
+      font-size: 0.9rem;
+      color: #b34070;
+      padding: 20px 0;
+    }
+  </style>
 </head>
 <body>
 
-<header>
-  <div class="banner">
-    <h1>Happy Birthday, Devi Ji! 🎉</h1>
-  </div>
-</header>
+  <header>
+    <div class="banner">
+      <h1>Happy Birthday, Devi Ji! 🎉</h1>
+    </div>
+  </header>
 
-<main>
-  <h2>Countdown to Your Special Moment</h2>
-  <p>Dear Devi Ji, the moment we've been waiting for is almost here. Let's count down together until your special day!</p>
+  <main>
+    <h2>Countdown to Your Special Moment</h2>
+    <p>Dear Devi Ji, the moment we've been waiting for is almost here. Let's count down together until your special day!</p>
 
-  <div id="countdown">Loading...</div>
-  <a href="https://sites.google.com/view/birthdaybliss/surprise-html" id="surpriseBtn">
-    🎁 Click here for your surprise!
-  </a>
-</main>
+    <div id="countdown">Loading...</div>
+    <p id="manualRedirect">Not redirected? <a href="surprise.html">Click here for your surprise 🎁</a></p>
+  </main>
 
-<footer>
-  Made with ❤️ by Ganduuu Naman
-</footer>
+  <footer>
+    Made with ❤️ by Ganduuu Naman
+  </footer>
 
-<script>
-  const countdownElement = document.getElementById("countdown");
-  const surpriseBtn = document.getElementById("surpriseBtn");
+  <script>
+    const countdownElement = document.getElementById("countdown");
+    const manualRedirect = document.getElementById("manualRedirect");
 
-  // Target date/time: June 10, 2025 00:00 IST (UTC+5:30)
-  const targetDateUTC = new Date(Date.UTC(2025, 5, 9, 18, 30, 0));
+    // Target: June 10, 2025 00:00 IST = June 9, 18:30 UTC
+    const targetDateUTC = new Date(Date.UTC(2025, 5, 9, 18, 30, 0));
 
-  function updateCountdown() {
-    const now = new Date().getTime();
-    const distance = targetDateUTC.getTime() - now;
+    function updateCountdown() {
+      const now = new Date().getTime();
+      const distance = targetDateUTC.getTime() - now;
 
-    if (distance > 0) {
-      const days = Math.floor(distance / (1000 * 60 * 60 * 24));
-      const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-      const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
-      const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+      if (distance > 0) {
+        const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+        const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+        const seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-      countdownElement.textContent = `${days}d ${hours}h ${minutes}m ${seconds}s`;
-    } else {
-      countdownElement.style.display = "none";
-      surpriseBtn.style.display = "inline-block";
-      clearInterval(timer);
+        countdownElement.textContent = `${days}d ${hours}h ${minutes}m ${seconds}s`;
+      } else {
+        clearInterval(timer);
+        countdownElement.textContent = "Redirecting to your surprise...";
+        manualRedirect.style.display = "block";
+        setTimeout(() => {
+          window.location.href = "surprise.html";
+        }, 2000);
+      }
     }
-  }
 
-  updateCountdown();
-  const timer = setInterval(updateCountdown, 1000);
-</script>
+    updateCountdown();
+    const timer = setInterval(updateCountdown, 1000);
+  </script>
 
 </body>
 </html>
