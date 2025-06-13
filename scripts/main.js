@@ -7,3 +7,18 @@ document.querySelectorAll("nav a").forEach(link => {
   link.addEventListener("mouseover", () => link.classList.add("underline"));
   link.addEventListener("mouseout", () => link.classList.remove("underline"));
 });
+function loginUser(email, password) {
+  fetch("/api/login", {
+    method: "POST",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ email, password })
+  })
+    .then(res => res.json())
+    .then(data => {
+      if (data.success) {
+        alert("✅ " + data.message);
+      } else {
+        alert("❌ " + data.message);
+      }
+    });
+}
