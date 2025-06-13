@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Updates | Idea Hatch</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="styles/style.css" />
+</head>
+<body class="bg-gray-900 text-white relative">
+
+  <!-- Ambient background -->
+  <div class="ambient-bg"></div>
+
+  <!-- NAV BAR -->
+  <header class="sticky top-0 z-20 bg-gray-900 bg-opacity-70 backdrop-blur-md">
+    <nav class="container mx-auto flex justify-between items-center py-4 px-6">
+      <img src="assets/images/logo.jpg" alt="Logo" class="h-10 w-auto rounded-full">
+      <div class="flex gap-6 text-white text-lg font-medium">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="projects.html">Projects</a>
+        <a href="birthdayblissindex.html">Birthday Bliss</a>
+        <a href="updates.html">Updates</a>
+      </div>
+    </nav>
+  </header>
+
+  <!-- UPDATES SECTION -->
+  <main class="container mx-auto px-4 py-16">
+    <h1 class="text-4xl font-bold mb-8 text-center">📝 Updates</h1>
+    <div id="updates-container" class="space-y-10">
+      <!-- JS will inject blog cards here -->
+    </div>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="text-center text-gray-500 py-6">
+    © <span id="year"></span> AltF4Soul_JaY — All rights reserved.
+  </footer>
+
+  <!-- SCRIPTS -->
+  <script src="scripts/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,18 @@
+[
+  {
+    "id": "1",
+    "title": "🎉 Idea Hatch Launched!",
+    "content": "The first version of the Idea Hatch website is now live with animated ambient effects and multiple pages.",
+    "author": "Naman",
+    "date": "2025-06-12",
+    "image": "assets/updates/post1.png"
+  },
+  {
+    "id": "2",
+    "title": "🎂 Birthday Bliss Added!",
+    "content": "We added a countdown surprise project. Check it under Projects section. Click the button to reveal magic!",
+    "author": "Naman",
+    "date": "2025-06-13",
+    "image": "assets/updates/default-post.png"
+  }
+]

@@ -9,20 +9,24 @@
 </head>
 <body class="bg-gray-900 text-white font-sans relative">
 
+  <!-- Ambient background layer (CSS) -->
   <div class="ambient-bg"></div>
 
+  <!-- NAVIGATION BAR -->
   <header class="sticky top-0 z-20 bg-gray-900 bg-opacity-70 backdrop-blur-md">
     <nav class="container mx-auto flex justify-between items-center py-4 px-6">
       <img src="assets/images/logo.jpg" alt="Logo" class="h-10 w-auto rounded-full">
-      <ul class="flex space-x-6 text-lg">
-        <li><a href="index.html" class="hover:text-pink-400">Home</a></li>
-        <li><a href="projects.html" class="hover:text-pink-400">Projects</a></li>
-        <li><a href="about.html" class="hover:text-pink-400">About</a></li>
-      </ul>
+      <div class="flex gap-6 text-white text-lg font-medium">
+        <a href="index.html">Home</a>
+        <a href="about.html">About</a>
+        <a href="projects.html">Projects</a>
+        <a href="birthdayblissindex.html">Birthday Bliss</a>
+        <a href="updates.html">Updates</a>
+      </div>
     </nav>
   </header>
 
-
+  <!-- HERO SECTION -->
   <main class="container mx-auto text-center py-20 px-4">
     <div class="relative overflow-hidden rounded-2xl shadow-2xl">
       <video autoplay muted loop playsinline class="w-full rounded-2xl">
@@ -35,13 +39,17 @@
     <p class="mt-8 text-xl text-gray-300 animate-fade-in">
       Turning sparks into code, design & creativity.
     </p>
-    <a href="projects.html" class="mt-10 inline-block bg-pink-600 hover:bg-pink-700 text-white px-6 py-3 rounded-full text-lg transition-all duration-300 animate-pop-in">See Projects →</a>
+    <a href="projects.html" class="mt-10 inline-block bg-pink-600 hover:bg-pink-700 text-white px-6 py-3 rounded-full text-lg transition-all duration-300 animate-pop-in">
+      See Projects →
+    </a>
   </main>
 
+  <!-- FOOTER -->
   <footer class="text-center text-gray-500 py-6">
     © <span id="year"></span> AltF4Soul_JaY — Crafted with ❤️
   </footer>
 
+  <!-- SCRIPTS -->
   <script src="scripts/main.js"></script>
 </body>
 </html>
