@@ -1,15 +1,9 @@
-// Theme toggle between light and dark mode
-document.getElementById('theme-toggle')?.addEventListener('click', () => {
-  document.body.classList.toggle('light-theme');
-});
 
-// Highlight active navigation link
-const currentPage = window.location.pathname.split("/").pop();
-document.querySelectorAll(".nav-link").forEach(link => {
-  if (link.getAttribute("data-target") === currentPage) {
-    link.classList.add("text-pink-400", "font-bold");
-  }
-});
-
-// Dynamic year in footer
+// Set dynamic year in footer
 document.getElementById("year").textContent = new Date().getFullYear();
+
+// Add hover effect to nav links (optional enhancement)
+document.querySelectorAll("nav a").forEach(link => {
+  link.addEventListener("mouseover", () => link.classList.add("underline"));
+  link.addEventListener("mouseout", () => link.classList.remove("underline"));
+});

@@ -1,31 +1,41 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Projects | Idea Hatch</title>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Projects — Idea Hatch</title>
   <script src="https://cdn.tailwindcss.com"></script>
-  <link rel="stylesheet" href="style/style.css" />
+  <link rel="stylesheet" href="styles/style.css" />
 </head>
-<body class="bg-gray-900 text-gray-100">
+<body class="bg-gray-900 text-white font-sans relative">
+  <div class="ambient-bg"></div>
 
-  <div class="fixed inset-0 -z-10 animate-ambient bg-ambient-pattern"></div>
-  <header class="sticky top-0 bg-opacity-50 bg-gray-900 backdrop-blur-md z-20">
-    <!-- navbar -->
+  <header class="sticky top-0 z-20 bg-gray-900 bg-opacity-70 backdrop-blur-md">
+    <nav class="container mx-auto flex justify-between items-center py-4 px-6">
+      <img src="assets/images/logo.jpg" alt="Logo" class="h-10 w-auto rounded-full">
+      <ul class="flex space-x-6 text-lg">
+        <li><a href="index.html" class="hover:text-pink-400">Home</a></li>
+        <li><a href="projects.html" class="hover:text-pink-400">Projects</a></li>
+        <li><a href="about.html" class="hover:text-pink-400">About</a></li>
+      </ul>
+    </nav>
   </header>
 
   <main class="container mx-auto px-6 py-20">
-    <h1 class="text-4xl font-bold mb-8 animate-fade-in">My Projects</h1>
-    <div class="grid gap-8 grid-cols-1 md:grid-cols-2 lg:grid-cols-3">
-      <!-- cards -->
+    <h1 class="text-4xl font-bold mb-6 text-center animate-fade-in-down">Projects</h1>
+    <div class="grid grid-cols-1 md:grid-cols-2 gap-8 animate-fade-in">
+      <div class="bg-gray-800 rounded-lg p-6 shadow-lg hover:shadow-pink-600 transition-all">
+        <h2 class="text-xl font-semibold mb-2 text-pink-400">Birthday Bliss 🎉</h2>
+        <p class="text-gray-300 mb-4">A fun birthday surprise project with countdown, music, and memories.</p>
+        <a href="birthdayblissindex.html" class="text-pink-300 hover:underline">View Project →</a>
+      </div>
     </div>
   </main>
 
-  <footer class="py-6 text-center text-sm text-gray-400">
-    © <span id="year"></span> AltF4Soul_JaY
+  <footer class="text-center text-gray-500 py-6">
+    © <span id="year"></span> AltF4Soul_JaY — Crafted with ❤️
   </footer>
 
-  <script src="scripts/nav.js"></script>
-  <script src="scripts/animations.js"></script>
-  <script src="scripts/theme.js"></script>
+  <script src="scripts/main.js"></script>
 </body>
 </html>

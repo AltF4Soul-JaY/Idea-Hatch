@@ -3,56 +3,44 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Idea Hatch by AltF4Soul_JaY</title>
-
-  <!-- Tailwind CSS -->
+  <title>Idea Hatch — Home</title>
   <script src="https://cdn.tailwindcss.com"></script>
-  <link rel="stylesheet" href="style/style.css" />
+  <link rel="stylesheet" href="styles/style.css" />
 </head>
-<body class="bg-gray-900 text-gray-100">
+<body class="bg-gray-900 text-white font-sans relative">
 
-  <div class="fixed inset-0 -z-10 animate-ambient bg-ambient-pattern"></div>
+  <div class="ambient-bg"></div>
 
-  <header class="sticky top-0 bg-opacity-50 bg-gray-900 backdrop-blur-md z-20">
-    <nav class="container mx-auto flex items-center justify-between py-4">
-      <img src="assets/images/logo.svg" alt="Idea Hatch" class="h-8 w-auto" />
+  <header class="sticky top-0 z-20 bg-gray-900 bg-opacity-70 backdrop-blur-md">
+    <nav class="container mx-auto flex justify-between items-center py-4 px-6">
+      <img src="assets/images/logo.jpg" alt="Logo" class="h-10 w-auto rounded-full">
       <ul class="flex space-x-6 text-lg">
-        <li><a href="index.html" class="nav-link" data-target="index.html">Home</a></li>
-        <li><a href="projects.html" class="nav-link" data-target="projects.html">Projects</a></li>
-        <li><a href="about.html" class="nav-link" data-target="about.html">About</a></li>
+        <li><a href="index.html" class="hover:text-pink-400">Home</a></li>
+        <li><a href="projects.html" class="hover:text-pink-400">Projects</a></li>
+        <li><a href="about.html" class="hover:text-pink-400">About</a></li>
       </ul>
-      <button id="theme-toggle" aria-label="Toggle Theme" class="p-2 rounded-full hover:bg-gray-700 transition">
-        🌗
-      </button>
     </nav>
   </header>
 
-  <main class="container mx-auto px-6 py-20 text-center">
-    <div class="relative overflow-hidden rounded-2xl">
-      <video autoplay muted loop playsinline class="w-full h-auto object-cover rounded-2xl">
+  <main class="container mx-auto text-center py-20 px-4">
+    <div class="relative overflow-hidden rounded-2xl shadow-2xl">
+      <video autoplay muted loop playsinline class="w-full rounded-2xl">
         <source src="assets/images/bg-hero.mp4" type="video/mp4" />
       </video>
       <div class="absolute inset-0 bg-black bg-opacity-50 flex items-center justify-center">
-        <h1 class="text-5xl md:text-6xl font-bold drop-shadow-lg animate-fade-in-down">
-          Welcome to Idea Hatch
-        </h1>
+        <h1 class="text-5xl font-bold animate-fade-in-down">Welcome to Idea Hatch</h1>
       </div>
     </div>
-    <p class="mt-8 text-xl animate-fade-in">
+    <p class="mt-8 text-xl text-gray-300 animate-fade-in">
       Turning sparks into code, design & creativity.
     </p>
-    <a href="projects.html"
-       class="mt-10 inline-block px-8 py-4 bg-red-600 hover:bg-red-700 rounded-full font-semibold animate-pop-in">
-      See Projects →
-    </a>
+    <a href="projects.html" class="mt-10 inline-block bg-pink-600 hover:bg-pink-700 text-white px-6 py-3 rounded-full text-lg transition-all duration-300 animate-pop-in">See Projects →</a>
   </main>
 
-  <footer class="py-6 text-center text-sm text-gray-400">
-    © <span id="year"></span> AltF4Soul_JaY — Crafted with ✨ & ☕
+  <footer class="text-center text-gray-500 py-6">
+    © <span id="year"></span> AltF4Soul_JaY — Crafted with ❤️
   </footer>
 
-  <script src="scripts/nav.js"></script>
-  <script src="scripts/animations.js"></script>
-  <script src="scripts/theme.js"></script>
+  <script src="scripts/main.js"></script>
 </body>
 </html>
