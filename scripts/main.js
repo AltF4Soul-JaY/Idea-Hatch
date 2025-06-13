@@ -3,7 +3,7 @@ function goTo(page) {
   window.location.href = page;
 }
 
-// Highlight active nav link
+// Highlight active nav link (if using onclick navigation)
 function highlightActiveLink() {
   const current = location.pathname.split("/").pop();
   document.querySelectorAll("nav a").forEach(link => {
@@ -14,33 +14,34 @@ function highlightActiveLink() {
   });
 }
 
-// Auto year
+// Auto-fill current year in footer
 function setCurrentYear() {
   const span = document.getElementById("year");
   if (span) span.textContent = new Date().getFullYear();
 }
 
-// Time greeting
+// Time-based greeting (Good morning/afternoon/evening)
 function showGreeting() {
   const greet = document.getElementById("greeting");
   if (!greet) return;
-  const h = new Date().getHours();
-  greet.textContent = h < 12 ? "Good morning!" : h < 18 ? "Good afternoon!" : "Good evening!";
+  const hour = new Date().getHours();
+  greet.textContent = hour < 12 ? "Good morning!" : hour < 18 ? "Good afternoon!" : "Good evening!";
 }
 
-// Toggle theme
+// Toggle light/dark theme
 function toggleTheme() {
   document.body.classList.toggle("light");
   localStorage.setItem("theme", document.body.classList.contains("light") ? "light" : "dark");
 }
 
-// Load theme
+// Load previously selected theme from localStorage
 function loadTheme() {
   if (localStorage.getItem("theme") === "light") {
     document.body.classList.add("light");
   }
 }
 
+// Initialize all on page load
 document.addEventListener("DOMContentLoaded", () => {
   highlightActiveLink();
   setCurrentYear();
