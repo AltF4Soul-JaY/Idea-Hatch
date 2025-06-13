@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" /><meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>About | Idea Hatch</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <link rel="stylesheet" href="../src/css/variables.css" />
+  <link rel="stylesheet" href="../src/css/base.css" />
+  <link rel="stylesheet" href="../src/css/components.css" />
+  <link rel="stylesheet" href="../src/css/utilities.css" />
+</head>
+<body class="bg-gray-900 text-gray-100">
+
+  <div class="fixed inset-0 -z-10 animate-ambient bg-ambient-pattern"></div>
+  <header class="sticky top-0 bg-opacity-50 bg-gray-900 backdrop-blur-md z-20">
+    <nav class="container mx-auto flex items-center justify-between py-4">
+      <img src="assets/images/logo.svg" alt="Idea Hatch" class="h-8"/>
+      <ul class="flex space-x-6 text-lg">
+        <li><a href="index.html" class="nav-link" data-target="index.html">Home</a></li>
+        <li><a href="projects.html" class="nav-link" data-target="projects.html">Projects</a></li>
+        <li><a href="about.html" class="nav-link active" data-target="about.html">About</a></li>
+      </ul>
+      <button id="theme-toggle" class="p-2 rounded-full hover:bg-gray-700">🌗</button>
+    </nav>
+  </header>
+
+  <main class="container mx-auto px-6 py-20 text-center">
+    <h1 class="text-4xl font-bold mb-6 animate-fade-in">About Me</h1>
+    <p class="max-w‑2xl mx-auto text-lg leading‑relaxed animate-fade-in delay-100">
+      I’m Naman (AltF4Soul_JaY), passionate about hatching ideas into code, design, and digital experiences.
+    </p>
+    <div class="mt-12 space-y-6 text-left max-w-3xl mx-auto">
+      <div class="card-glass p-6 animate-pop-in delay-200">
+        <h2 class="text-2xl font-semibold mb-2">👨‍💻 Who I Am</h2>
+        <p>Web‑dev beginner turned tinkerer. Always exploring new tools & techniques.</p>
+      </div>
+      <div class="card-glass p-6 animate-pop-in delay-300">
+        <h2 class="text-2xl font-semibold mb-2">🎯 My Goal</h2>
+        <p>Build sleek, performant interfaces that delight and inspire.</p>
+      </div>
+    </div>
+  </main>
+
+  <footer class="py-6 text-center text-sm text-gray-400">
+    © <span id="year"></span> AltF4Soul_JaY
+  </footer>
+
+  <script src="../src/js/nav.js"></script>
+  <script src="../src/js/animations.js"></script>
+  <script src="../src/js/theme.js"></script>
+</body>
+</html>

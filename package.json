@@ -1,0 +1,11 @@
+{
+  "name": "idea-hatch-site",
+  "version": "1.0.0",
+  "scripts": {
+    "build:css": "tailwindcss -i ./src/css/base.css -o ./public/css/style.css --minify",
+    "watch:css": "tailwindcss -i ./src/css/base.css -o ./public/css/style.css --watch"
+  },
+  "devDependencies": {
+    "tailwindcss": "^3.5.4"
+  }
+}

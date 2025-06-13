@@ -1,0 +1,19 @@
+/* Utility overrides or extra classes */
+.container {
+  max-width: 1200px;
+}
+.text-shadow {
+  text-shadow: 0 2px 8px rgba(0,0,0,0.6);
+}
+.active {
+  color: var(--color-primary) !important;
+  position: relative;
+}
+.active::after {
+  content: '';
+  position: absolute;
+  bottom: -4px; left: 0;
+  height: 3px; width: 100%;
+  background: var(--color-primary);
+  border-radius: 2px;
+}
