@@ -1,0 +1,121 @@
+/* Reset & Base Styling */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(120deg, #fdfbfb, #ebedee);
+  color: #333;
+  min-height: 100vh;
+  overflow-x: hidden;
+}
+
+/* Header */
+header {
+  background-color: #0f172a;
+  color: white;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 2rem;
+  box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+}
+.logo {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+nav a {
+  margin-left: 1.5rem;
+  text-decoration: none;
+  color: #fff;
+  font-weight: 500;
+  position: relative;
+}
+nav a:hover {
+  color: #38bdf8;
+}
+nav a::after {
+  content: "";
+  display: block;
+  height: 2px;
+  width: 0%;
+  background-color: #38bdf8;
+  transition: 0.4s;
+  position: absolute;
+  bottom: -4px;
+  left: 0;
+}
+nav a:hover::after {
+  width: 100%;
+}
+
+/* Hero Section */
+.hero {
+  text-align: center;
+  padding: 60px 20px;
+}
+.hero h1 {
+  font-size: 3rem;
+  color: #0f172a;
+}
+.hero p {
+  font-size: 1.2rem;
+  margin: 10px auto 30px;
+  max-width: 600px;
+}
+
+/* Project Cards */
+.project-card {
+  background: white;
+  max-width: 700px;
+  margin: 30px auto;
+  padding: 25px;
+  border-radius: 16px;
+  box-shadow: 0 8px 20px rgba(0,0,0,0.08);
+  text-align: left;
+}
+.project-card h2 {
+  font-size: 1.6rem;
+  margin-bottom: 10px;
+}
+.project-card a {
+  display: inline-block;
+  margin-top: 15px;
+  color: white;
+  background: #0f172a;
+  padding: 10px 18px;
+  border-radius: 8px;
+  text-decoration: none;
+  transition: 0.3s;
+}
+.project-card a:hover {
+  background: #334155;
+}
+
+/* Footer */
+footer {
+  background-color: #0f172a;
+  color: #fff;
+  text-align: center;
+  padding: 1rem;
+}
+
+/* Theme Toggle */
+.theme-toggle {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: #0f172a;
+  color: white;
+  padding: 10px 16px;
+  border-radius: 30px;
+  cursor: pointer;
+  font-weight: 600;
+  box-shadow: 0 6px 14px rgba(0,0,0,0.15);
+  transition: 0.3s;
+}
+.theme-toggle:hover {
+  background: #1e293b;
+}

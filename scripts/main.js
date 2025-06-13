@@ -1,50 +1,66 @@
-// Navigate to a page
-function goTo(page) {
-  window.location.href = page;
-}
+// nav.js
+// Highlight active link
+const links = document.querySelectorAll('.nav-link');
+links.forEach(link => {
+  const target = link.getAttribute('data-target');
+  if (target === window.location.pathname.split('/').pop()) {
+    link.classList.add('active');
+  }
+});
 
-// Highlight active nav link (if using onclick navigation)
-function highlightActiveLink() {
-  const current = location.pathname.split("/").pop();
-  document.querySelectorAll("nav a").forEach(link => {
-    const target = link.getAttribute("onclick")?.match(/'(.+)'/);
-    if (target && target[1] === current) {
-      link.classList.add("active");
+// Smooth scrolling for anchor links
+const anchorLinks = document.querySelectorAll('a[href^="#"]');
+anchorLinks.forEach(a => {
+  a.addEventListener('click', function(e) {
+    e.preventDefault();
+    const selector = this.getAttribute('href');
+    document.querySelector(selector)?.scrollIntoView({ behavior: 'smooth' });
+  });
+});
+// animations.js
+// Scroll‑reveal using IntersectionObserver
+const observer = new IntersectionObserver((entries) => {
+  entries.forEach(entry => {
+    if (entry.isIntersecting) {
+      entry.target.classList.add('animate-fade-in-down');
+      observer.unobserve(entry.target);
     }
   });
-}
+}, { threshold: 0.2 });
 
-// Auto-fill current year in footer
-function setCurrentYear() {
-  const span = document.getElementById("year");
-  if (span) span.textContent = new Date().getFullYear();
-}
+// Observe elements to animate
+const revealElements = document.querySelectorAll('main h1, .card-glass, .btn-glow');
+revealElements.forEach(el => {
+  el.classList.add('opacity-0');
+  observer.observe(el);
+});
+// theme.js
+// Theme toggle and year auto-update
+const themeToggleBtn = document.getElementById('theme-toggle');
+const rootElement = document.documentElement;
+const yearSpan = document.getElementById('year');
 
-// Time-based greeting (Good morning/afternoon/evening)
-function showGreeting() {
-  const greet = document.getElementById("greeting");
-  if (!greet) return;
-  const hour = new Date().getHours();
-  greet.textContent = hour < 12 ? "Good morning!" : hour < 18 ? "Good afternoon!" : "Good evening!";
-}
-
-// Toggle light/dark theme
-function toggleTheme() {
-  document.body.classList.toggle("light");
-  localStorage.setItem("theme", document.body.classList.contains("light") ? "light" : "dark");
-}
-
-// Load previously selected theme from localStorage
+// Load theme from localStorage
 function loadTheme() {
-  if (localStorage.getItem("theme") === "light") {
-    document.body.classList.add("light");
+  if (localStorage.getItem('theme') === 'light') {
+    rootElement.classList.add('dark');
   }
 }
 
-// Initialize all on page load
-document.addEventListener("DOMContentLoaded", () => {
-  highlightActiveLink();
-  setCurrentYear();
-  showGreeting();
+// Toggle theme and save preference
+function toggleTheme() {
+  const isDark = rootElement.classList.toggle('dark');
+  localStorage.setItem('theme', isDark ? 'light' : 'dark');
+}
+
+document.addEventListener('DOMContentLoaded', () => {
   loadTheme();
+  // Set current year in footer
+  if (yearSpan) {
+    yearSpan.textContent = new Date().getFullYear();
+  }
+  // Attach toggle handler
+  if (themeToggleBtn) {
+    themeToggleBtn.addEventListener('click', toggleTheme);
+  }
 });
