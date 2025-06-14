@@ -28,9 +28,36 @@
 
   <!-- UPDATES SECTION -->
   <main class="container mx-auto px-4 py-16">
-    <h1 class="text-4xl font-bold mb-8 text-center">📝 Updates</h1>
-    <div id="updates-container" class="space-y-10">
-      <!-- JS will inject blog cards here -->
+    <h1 class="text-4xl font-bold mb-12 text-center text-pink-400">📝 Updates</h1>
+    <div id="updates-container" class="space-y-12">
+
+      <!-- Launch Blogpost -->
+      <div class="bg-gray-800 rounded-xl p-6 shadow-lg hover:shadow-pink-600 transition-all duration-300">
+        <img src="assets/images/logo.jpg" alt="Idea Hatch Logo" class="w-full rounded-lg mb-4 max-h-64 object-contain">
+        <h2 class="text-2xl font-bold mb-2 text-pink-300">🚀 Official Launch of Idea Hatch</h2>
+        <p class="text-gray-300 leading-relaxed">
+          The journey begins! Idea Hatch is now live — a creative playground to experiment with unique, meaningful web projects. Stay tuned as we hatch one idea at a time.
+        </p>
+      </div>
+
+      <!-- Birthday Bliss -->
+      <div class="bg-gray-800 rounded-xl p-6 shadow-lg hover:shadow-yellow-500 transition-all duration-300">
+        <img src="https://ik.imagekit.io/kozygc3l3/WhatsApp%20Image%202025-05-27%20at%2008.13.26_20ab4cee.jpg?updatedAt=1749482560470" alt="Birthday Bliss" class="w-full rounded-lg mb-4 max-h-64 object-cover">
+        <h2 class="text-2xl font-bold mb-2 text-yellow-300">🎂 Launched: Birthday Bliss Project</h2>
+        <p class="text-gray-300 leading-relaxed">
+          This project was made for birthday a special person on 10th of June 2025. Check memory for more info.
+        </p>
+      </div>
+
+      <!-- Elementify -->
+      <div class="bg-gray-800 rounded-xl p-6 shadow-lg hover:shadow-blue-500 transition-all duration-300">
+        <img src="assets/images/Elementify-periodic-lyrics-logo.jpg" alt="Elementify Logo" class="w-full rounded-lg mb-4 max-h-64 object-contain">
+        <h2 class="text-2xl font-bold mb-2 text-blue-300">🔬 Introducing: Elementify My Lyrics</h2>
+        <p class="text-gray-300 leading-relaxed">
+          Words meet science! With Elementify, your lyrics get a periodic-table twist. Turn simple sentences into an atomic symphony — one element at a time.
+        </p>
+      </div>
+
     </div>
   </main>
 
@@ -40,6 +67,10 @@
   </footer>
 
   <!-- SCRIPTS -->
+  <script>
+    // Auto-update year
+    document.getElementById('year').textContent = new Date().getFullYear();
+  </script>
   <script src="scripts/main.js"></script>
 </body>
 </html>

@@ -71,6 +71,24 @@
   </style>
 </head>
 <body>
+
+  <!-- Floating background logo -->
+<img src="assets/images/Elementify-periodic-lyrics-logo.jpg" alt="Elementify Logo"
+     style="
+       position: fixed;
+       top: 50%;
+       left: 50%;
+       transform: translate(-50%, -50%);
+       width: 300px;
+       opacity: 0.05;
+       z-index: 0;
+       pointer-events: none;
+       transition: opacity 0.3s ease-in-out;
+     "
+     onmouseover="this.style.opacity='0.08'"
+     onmouseout="this.style.opacity='0.05'"
+>
+
   <div class="container">
     <h1>Elementify 🔬</h1>
     <textarea id="lyricsInput" placeholder="Type your lyrics here..."></textarea>
