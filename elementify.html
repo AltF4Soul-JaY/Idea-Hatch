@@ -224,5 +224,70 @@ const elements = {
       });
     }
   </script>
+
+  <!-- Add this to the end of your existing HTML just before </body> -->
+
+<style>
+  .rating-section {
+    margin-top: 40px;
+    padding: 20px;
+    background: #1e293b;
+    border-radius: 12px;
+    box-shadow: 0 0 10px #38bdf8;
+  }
+  .rating-section h2 {
+    font-size: 20px;
+    margin-bottom: 10px;
+    color: #facc15;
+  }
+  .stars {
+    display: flex;
+    justify-content: center;
+    gap: 12px;
+    font-size: 32px;
+    cursor: pointer;
+  }
+  .stars span:hover {
+    transform: scale(1.2);
+    transition: 0.2s;
+  }
+</style>
+
+<div class="container rating-section">
+  <h2>Rate this project</h2>
+  <div class="stars">
+    <span onclick="rate(1)">⭐</span>
+    <span onclick="rate(2)">⭐</span>
+    <span onclick="rate(3)">⭐</span>
+    <span onclick="rate(4)">⭐</span>
+    <span onclick="rate(5)">⭐</span>
+  </div>
+</div>
+
+<script>
+  function rate(star) {
+    let message = '';
+    switch (star) {
+      case 1:
+        message = "I didn’t like it at all. Needs major improvement. (1)";
+        break;
+      case 2:
+        message = "Somewhat works, but not satisfied. Needs more polish. (2)";
+        break;
+      case 3:
+        message = "It’s okay. Could be better with more features. (3)";
+        break;
+      case 4:
+        message = "Great job! Just a few improvements needed. (4)";
+        break;
+      case 5:
+        message = "Absolutely loved it! Perfectly done. (5)";
+        break;
+    }
+    const encoded = encodeURIComponent(message);
+    window.location.href = `https://wa.me/918917286491?text=${encoded}`;
+  }
+</script>
+
 </body>
 </html>
