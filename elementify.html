@@ -2,104 +2,226 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
-  <title>Elementify My Lyrics — Idea Hatch</title>
-  <script src="https://cdn.tailwindcss.com"></script>
-  <style>
-    body { scroll-behavior: smooth; }
-    .ambient-bg {
-      position: fixed;
-      inset: 0;
-      z-index: -1;
-      background: radial-gradient(circle at 20% 20%, rgba(255, 0, 150, 0.1), transparent 50%),
-                  radial-gradient(circle at 80% 80%, rgba(0, 200, 255, 0.1), transparent 50%);
-      animation: ambientMove 20s infinite alternate ease-in-out;
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Elementify — Periodic Lyrics</title>
+  <style>                
+    body {
+      background-color: #0f172a;
+      color: white;
+      font-family: 'Segoe UI', sans-serif;
+      margin: 0;
+      padding: 20px;
     }
-    @keyframes ambientMove {
-      0% { background-position: 0% 0%, 100% 100%; }
-      100% { background-position: 100% 100%, 0% 0%; }
+    .container {
+      max-width: 800px;
+      margin: auto;
+      text-align: center;
     }
-    .animate-fade-in { animation: fadeIn 2s ease-out both; }
-    .animate-fade-in-down { animation: fadeInDown 1.5s ease-out both; }
-    @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
-    @keyframes fadeInDown { from { transform: translateY(-20px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+    textarea {
+      width: 100%;
+      height: 100px;
+      margin-top: 20px;
+      padding: 10px;
+      font-size: 16px;
+      border-radius: 8px;
+      border: none;
+      resize: none;
+    }
+    button {
+      margin-top: 15px;
+      padding: 10px 20px;
+      font-size: 16px;
+      border: none;
+      background-color: #9333ea;
+      color: white;
+      border-radius: 8px;
+      cursor: pointer;
+    }
+    button:hover {
+      background-color: #7e22ce;
+    }
+    .output-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+      gap: 16px;
+      margin-top: 30px;
+    }
+    .element-card {
+      background-color: #1e293b;
+      border-radius: 12px;
+      padding: 10px;
+      box-shadow: 0 0 10px #0ff;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+    }
+    .element-symbol {
+      font-size: 32px;
+      font-weight: bold;
+      color: #38bdf8;
+    }
+    .element-name {
+      font-size: 14px;
+      color: #facc15;
+    }
+    .element-atomic {
+      font-size: 12px;
+      color: #94a3b8;
+    }
   </style>
 </head>
-<body class="bg-gray-900 text-white font-sans relative">
-  <div class="ambient-bg"></div>
-
-  <header class="sticky top-0 z-20 bg-gray-900 bg-opacity-70 backdrop-blur-md">
-    <nav class="container mx-auto flex justify-between items-center py-4 px-6">
-      <img src="assets/images/logo.jpg" alt="Logo" class="h-10 w-auto rounded-full">
-      <ul class="flex space-x-6 text-lg">
-        <li><a href="index.html" class="hover:text-pink-400">Home</a></li>
-        <li><a href="projects.html" class="hover:text-pink-400">Projects</a></li>
-        <li><a href="about.html" class="hover:text-pink-400">About</a></li>
-      </ul>
-    </nav>
-  </header>
-
-  <main class="container mx-auto px-6 py-20 text-center">
-    <h1 class="text-4xl font-bold mb-6 animate-fade-in-down">Elementify My Lyrics 🔬</h1>
-
-    <textarea id="lyricsInput" rows="4" class="w-full max-w-3xl mx-auto p-4 rounded-md bg-gray-800 text-white border border-gray-600 resize-none mb-4" placeholder="Type your lyrics..."></textarea>
-
-    <button onclick="convertToElements()" class="bg-pink-500 text-white px-6 py-2 rounded hover:bg-pink-600 transition">Convert</button>
-
-    <div id="result" class="mt-8 text-xl text-pink-300 font-mono animate-fade-in whitespace-pre-line"></div>
-  </main>
-
-  <footer class="text-center text-gray-500 py-6">
-    © <span id="year"></span> AltF4Soul_JaY — Crafted with ❤️
-  </footer>
+<body>
+  <div class="container">
+    <h1>Elementify 🔬</h1>
+    <textarea id="lyricsInput" placeholder="Type your lyrics here..."></textarea>
+    <br>
+    <button onclick="elementify()">Convert to Elements</button>
+    <div id="output" class="output-grid"></div>
+  </div>
 
   <script>
-    document.getElementById("year").textContent = new Date().getFullYear();
+    
+const elements = {
+  H:   { name: "Hydrogen",       number: 1  },
+  He:  { name: "Helium",         number: 2  },
+  Li:  { name: "Lithium",        number: 3  },
+  Be:  { name: "Beryllium",      number: 4  },
+  B:   { name: "Boron",          number: 5  },
+  C:   { name: "Carbon",         number: 6  },
+  N:   { name: "Nitrogen",       number: 7  },
+  O:   { name: "Oxygen",         number: 8  },
+  F:   { name: "Fluorine",       number: 9  },
+  Ne:  { name: "Neon",           number: 10 },
+  Na:  { name: "Sodium",         number: 11 },
+  Mg:  { name: "Magnesium",      number: 12 },
+  Al:  { name: "Aluminium",      number: 13 },
+  Si:  { name: "Silicon",        number: 14 },
+  P:   { name: "Phosphorus",     number: 15 },
+  S:   { name: "Sulfur",         number: 16 },
+  Cl:  { name: "Chlorine",       number: 17 },
+  Ar:  { name: "Argon",          number: 18 },
+  K:   { name: "Potassium",      number: 19 },
+  Ca:  { name: "Calcium",        number: 20 },
+  Sc:  { name: "Scandium",       number: 21 },
+  Ti:  { name: "Titanium",       number: 22 },
+  V:   { name: "Vanadium",       number: 23 },
+  Cr:  { name: "Chromium",       number: 24 },
+  Mn:  { name: "Manganese",      number: 25 },
+  Fe:  { name: "Iron",           number: 26 },
+  Co:  { name: "Cobalt",         number: 27 },
+  Ni:  { name: "Nickel",         number: 28 },
+  Cu:  { name: "Copper",         number: 29 },
+  Zn:  { name: "Zinc",           number: 30 },
+  Ga:  { name: "Gallium",        number: 31 },
+  Ge:  { name: "Germanium",      number: 32 },
+  As:  { name: "Arsenic",        number: 33 },
+  Se:  { name: "Selenium",       number: 34 },
+  Br:  { name: "Bromine",        number: 35 },
+  Kr:  { name: "Krypton",        number: 36 },
+  Rb:  { name: "Rubidium",       number: 37 },
+  Sr:  { name: "Strontium",      number: 38 },
+  Y:   { name: "Yttrium",        number: 39 },
+  Zr:  { name: "Zirconium",      number: 40 },
+  Nb:  { name: "Niobium",        number: 41 },
+  Mo:  { name: "Molybdenum",     number: 42 },
+  Tc:  { name: "Technetium",     number: 43 },
+  Ru:  { name: "Ruthenium",      number: 44 },
+  Rh:  { name: "Rhodium",        number: 45 },
+  Pd:  { name: "Palladium",      number: 46 },
+  Ag:  { name: "Silver",         number: 47 },
+  Cd:  { name: "Cadmium",        number: 48 },
+  In:  { name: "Indium",         number: 49 },
+  Sn:  { name: "Tin",            number: 50 },
+  Sb:  { name: "Antimony",       number: 51 },
+  Te:  { name: "Tellurium",      number: 52 },
+  I:   { name: "Iodine",         number: 53 },
+  Xe:  { name: "Xenon",          number: 54 },
+  Cs:  { name: "Caesium",        number: 55 },
+  Ba:  { name: "Barium",         number: 56 },
+  La:  { name: "Lanthanum",      number: 57 },
+  Ce:  { name: "Cerium",         number: 58 },
+  Pr:  { name: "Praseodymium",   number: 59 },
+  Nd:  { name: "Neodymium",      number: 60 },
+  Pm:  { name: "Promethium",     number: 61 },
+  Sm:  { name: "Samarium",       number: 62 },
+  Eu:  { name: "Europium",       number: 63 },
+  Gd:  { name: "Gadolinium",     number: 64 },
+  Tb:  { name: "Terbium",        number: 65 },
+  Dy:  { name: "Dysprosium",     number: 66 },
+  Ho:  { name: "Holmium",        number: 67 },
+  Er:  { name: "Erbium",         number: 68 },
+  Tm:  { name: "Thulium",        number: 69 },
+  Yb:  { name: "Ytterbium",      number: 70 },
+  Lu:  { name: "Lutetium",       number: 71 },
+  Hf:  { name: "Hafnium",        number: 72 },
+  Ta:  { name: "Tantalum",       number: 73 },
+  W:   { name: "Tungsten",       number: 74 },
+  Re:  { name: "Rhenium",        number: 75 },
+  Os:  { name: "Osmium",         number: 76 },
+  Ir:  { name: "Iridium",        number: 77 },
+  Pt:  { name: "Platinum",       number: 78 },
+  Au:  { name: "Gold",           number: 79 },
+  Hg:  { name: "Mercury",        number: 80 },
+  Tl:  { name: "Thallium",       number: 81 },
+  Pb:  { name: "Lead",           number: 82 },
+  Bi:  { name: "Bismuth",        number: 83 },
+  Po:  { name: "Polonium",       number: 84 },
+  At:  { name: "Astatine",       number: 85 },
+  Rn:  { name: "Radon",          number: 86 },
+  Fr:  { name: "Francium",       number: 87 },
+  Ra:  { name: "Radium",         number: 88 },
+  Ac:  { name: "Actinium",       number: 89 },
+  Th:  { name: "Thorium",        number: 90 },
+  Pa:  { name: "Protactinium",   number: 91 },
+  U:   { name: "Uranium",        number: 92 },
+  Np:  { name: "Neptunium",      number: 93 },
+  Pu:  { name: "Plutonium",      number: 94 },
+  Am:  { name: "Americium",      number: 95 },
+  Cm:  { name: "Curium",         number: 96 },
+  Bk:  { name: "Berkelium",      number: 97 },
+  Cf:  { name: "Californium",    number: 98 },
+  Es:  { name: "Einsteinium",    number: 99 },
+  Fm:  { name: "Fermium",        number: 100 },
+  Md:  { name: "Mendelevium",    number: 101 },
+  No:  { name: "Nobelium",       number: 102 },
+  Lr:  { name: "Lawrencium",     number: 103 },
+  Rf:  { name: "Rutherfordium",  number: 104 },
+  Db:  { name: "Dubnium",        number: 105 },
+  Sg:  { name: "Seaborgium",     number: 106 },
+  Bh:  { name: "Bohrium",        number: 107 },
+  Hs:  { name: "Hassium",        number: 108 },
+  Mt:  { name: "Meitnerium",     number: 109 },
+  Ds:  { name: "Darmstadtium",   number: 110 },
+  Rg:  { name: "Roentgenium",    number: 111 },
+  Cn:  { name: "Copernicium",    number: 112 },
+  Nh:  { name: "Nihonium",       number: 113 },
+  Fl:  { name: "Flerovium",      number: 114 },
+  Mc:  { name: "Moscovium",      number: 115 },
+  Lv:  { name: "Livermorium",    number: 116 },
+  Ts:  { name: "Tennessine",     number: 117 },
+  Og:  { name: "Oganesson",      number: 118 }
+};
 
-    const elements = {
-      H: "Hydrogen", He: "Helium", Li: "Lithium", Be: "Beryllium", B: "Boron", C: "Carbon", N: "Nitrogen", O: "Oxygen", F: "Fluorine", Ne: "Neon",
-      Na: "Sodium", Mg: "Magnesium", Al: "Aluminium", Si: "Silicon", P: "Phosphorus", S: "Sulfur", Cl: "Chlorine", Ar: "Argon", K: "Potassium", Ca: "Calcium",
-      Sc: "Scandium", Ti: "Titanium", V: "Vanadium", Cr: "Chromium", Mn: "Manganese", Fe: "Iron", Co: "Cobalt", Ni: "Nickel", Cu: "Copper", Zn: "Zinc",
-      Ga: "Gallium", Ge: "Germanium", As: "Arsenic", Se: "Selenium", Br: "Bromine", Kr: "Krypton", Rb: "Rubidium", Sr: "Strontium", Y: "Yttrium", Zr: "Zirconium",
-      Nb: "Niobium", Mo: "Molybdenum", Tc: "Technetium", Ru: "Ruthenium", Rh: "Rhodium", Pd: "Palladium", Ag: "Silver", Cd: "Cadmium", In: "Indium", Sn: "Tin",
-      Sb: "Antimony", Te: "Tellurium", I: "Iodine", Xe: "Xenon", Cs: "Caesium", Ba: "Barium", La: "Lanthanum", Ce: "Cerium", Pr: "Praseodymium", Nd: "Neodymium",
-      Pm: "Promethium", Sm: "Samarium", Eu: "Europium", Gd: "Gadolinium", Tb: "Terbium", Dy: "Dysprosium", Ho: "Holmium", Er: "Erbium", Tm: "Thulium", Yb: "Ytterbium",
-      Lu: "Lutetium", Hf: "Hafnium", Ta: "Tantalum", W: "Tungsten", Re: "Rhenium", Os: "Osmium", Ir: "Iridium", Pt: "Platinum", Au: "Gold", Hg: "Mercury",
-      Tl: "Thallium", Pb: "Lead", Bi: "Bismuth", Po: "Polonium", At: "Astatine", Rn: "Radon", Fr: "Francium", Ra: "Radium", Ac: "Actinium", Th: "Thorium",
-      Pa: "Protactinium", U: "Uranium", Np: "Neptunium", Pu: "Plutonium", Am: "Americium", Cm: "Curium", Bk: "Berkelium", Cf: "Californium", Es: "Einsteinium", Fm: "Fermium",
-      Md: "Mendelevium", No: "Nobelium", Lr: "Lawrencium", Rf: "Rutherfordium", Db: "Dubnium", Sg: "Seaborgium", Bh: "Bohrium", Hs: "Hassium", Mt: "Meitnerium", Ds: "Darmstadtium",
-      Rg: "Roentgenium", Cn: "Copernicium", Nh: "Nihonium", Fl: "Flerovium", Mc: "Moscovium", Lv: "Livermorium", Ts: "Tennessine", Og: "Oganesson"
-    };
-
-    function convertToElements() {
-      const input = document.getElementById("lyricsInput").value.trim();
-      const words = input.split(/\s+/);
-      const resultContainer = document.getElementById("result");
-      let result = "";
-
-      words.forEach(word => {
-        let converted = "";
-        let i = 0;
-        while (i < word.length) {
-          const two = word.substring(i, i + 2);
-          const twoFormatted = two.charAt(0).toUpperCase() + two.charAt(1)?.toLowerCase();
-          const one = word.charAt(i).toUpperCase();
-
-          if (elements[twoFormatted]) {
-            converted += `| ${twoFormatted} `;
-            i += 2;
-          } else if (elements[one]) {
-            converted += `| ${one} `;
-            i += 1;
-          } else {
-            converted += `| ${word.charAt(i)} `;
-            i += 1;
-          }
+    function elementify() {
+      const input = document.getElementById('lyricsInput').value;
+      const output = document.getElementById('output');
+      output.innerHTML = '';
+      
+      const words = input.match(/[a-zA-Z]{1,2}/g) || [];
+      words.forEach((part) => {
+        const symbol = part.charAt(0).toUpperCase() + (part[1]?.toLowerCase() || '');
+        if (elements[symbol]) {
+          const el = elements[symbol];
+          const card = document.createElement('div');
+          card.className = 'element-card';
+          card.innerHTML = `
+            <div class="element-atomic">${el.number}</div>
+            <div class="element-symbol">${symbol}</div>
+            <div class="element-name">${el.name}</div>
+          `;
+          output.appendChild(card);
         }
-        result += converted + "|\n";
       });
-
-      resultContainer.textContent = result.trim();
     }
   </script>
 </body>
