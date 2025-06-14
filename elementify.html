@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Elementify My Lyrics — Idea Hatch</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <style>
+    body { scroll-behavior: smooth; }
+    .ambient-bg {
+      position: fixed;
+      inset: 0;
+      z-index: -1;
+      background: radial-gradient(circle at 20% 20%, rgba(255, 0, 150, 0.1), transparent 50%),
+                  radial-gradient(circle at 80% 80%, rgba(0, 200, 255, 0.1), transparent 50%);
+      animation: ambientMove 20s infinite alternate ease-in-out;
+    }
+    @keyframes ambientMove {
+      0% { background-position: 0% 0%, 100% 100%; }
+      100% { background-position: 100% 100%, 0% 0%; }
+    }
+    .animate-fade-in { animation: fadeIn 2s ease-out both; }
+    .animate-fade-in-down { animation: fadeInDown 1.5s ease-out both; }
+    @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+    @keyframes fadeInDown { from { transform: translateY(-20px); opacity: 0; } to { transform: translateY(0); opacity: 1; } }
+  </style>
+</head>
+<body class="bg-gray-900 text-white font-sans relative">
+  <div class="ambient-bg"></div>
+
+  <header class="sticky top-0 z-20 bg-gray-900 bg-opacity-70 backdrop-blur-md">
+    <nav class="container mx-auto flex justify-between items-center py-4 px-6">
+      <img src="assets/images/logo.jpg" alt="Logo" class="h-10 w-auto rounded-full">
+      <ul class="flex space-x-6 text-lg">
+        <li><a href="index.html" class="hover:text-pink-400">Home</a></li>
+        <li><a href="projects.html" class="hover:text-pink-400">Projects</a></li>
+        <li><a href="about.html" class="hover:text-pink-400">About</a></li>
+      </ul>
+    </nav>
+  </header>
+
+  <main class="container mx-auto px-6 py-20 text-center">
+    <h1 class="text-4xl font-bold mb-6 animate-fade-in-down">Elementify My Lyrics 🔬</h1>
+
+    <textarea id="lyricsInput" rows="4" class="w-full max-w-3xl mx-auto p-4 rounded-md bg-gray-800 text-white border border-gray-600 resize-none mb-4" placeholder="Type your lyrics..."></textarea>
+
+    <button onclick="convertToElements()" class="bg-pink-500 text-white px-6 py-2 rounded hover:bg-pink-600 transition">Convert</button>
+
+    <div id="result" class="mt-8 text-xl text-pink-300 font-mono animate-fade-in whitespace-pre-line"></div>
+  </main>
+
+  <footer class="text-center text-gray-500 py-6">
+    © <span id="year"></span> AltF4Soul_JaY — Crafted with ❤️
+  </footer>
+
+  <script>
+    document.getElementById("year").textContent = new Date().getFullYear();
+
+    const elements = {
+      H: "Hydrogen", He: "Helium", Li: "Lithium", Be: "Beryllium", B: "Boron", C: "Carbon", N: "Nitrogen", O: "Oxygen", F: "Fluorine", Ne: "Neon",
+      Na: "Sodium", Mg: "Magnesium", Al: "Aluminium", Si: "Silicon", P: "Phosphorus", S: "Sulfur", Cl: "Chlorine", Ar: "Argon", K: "Potassium", Ca: "Calcium",
+      Sc: "Scandium", Ti: "Titanium", V: "Vanadium", Cr: "Chromium", Mn: "Manganese", Fe: "Iron", Co: "Cobalt", Ni: "Nickel", Cu: "Copper", Zn: "Zinc",
+      Ga: "Gallium", Ge: "Germanium", As: "Arsenic", Se: "Selenium", Br: "Bromine", Kr: "Krypton", Rb: "Rubidium", Sr: "Strontium", Y: "Yttrium", Zr: "Zirconium",
+      Nb: "Niobium", Mo: "Molybdenum", Tc: "Technetium", Ru: "Ruthenium", Rh: "Rhodium", Pd: "Palladium", Ag: "Silver", Cd: "Cadmium", In: "Indium", Sn: "Tin",
+      Sb: "Antimony", Te: "Tellurium", I: "Iodine", Xe: "Xenon", Cs: "Caesium", Ba: "Barium", La: "Lanthanum", Ce: "Cerium", Pr: "Praseodymium", Nd: "Neodymium",
+      Pm: "Promethium", Sm: "Samarium", Eu: "Europium", Gd: "Gadolinium", Tb: "Terbium", Dy: "Dysprosium", Ho: "Holmium", Er: "Erbium", Tm: "Thulium", Yb: "Ytterbium",
+      Lu: "Lutetium", Hf: "Hafnium", Ta: "Tantalum", W: "Tungsten", Re: "Rhenium", Os: "Osmium", Ir: "Iridium", Pt: "Platinum", Au: "Gold", Hg: "Mercury",
+      Tl: "Thallium", Pb: "Lead", Bi: "Bismuth", Po: "Polonium", At: "Astatine", Rn: "Radon", Fr: "Francium", Ra: "Radium", Ac: "Actinium", Th: "Thorium",
+      Pa: "Protactinium", U: "Uranium", Np: "Neptunium", Pu: "Plutonium", Am: "Americium", Cm: "Curium", Bk: "Berkelium", Cf: "Californium", Es: "Einsteinium", Fm: "Fermium",
+      Md: "Mendelevium", No: "Nobelium", Lr: "Lawrencium", Rf: "Rutherfordium", Db: "Dubnium", Sg: "Seaborgium", Bh: "Bohrium", Hs: "Hassium", Mt: "Meitnerium", Ds: "Darmstadtium",
+      Rg: "Roentgenium", Cn: "Copernicium", Nh: "Nihonium", Fl: "Flerovium", Mc: "Moscovium", Lv: "Livermorium", Ts: "Tennessine", Og: "Oganesson"
+    };
+
+    function convertToElements() {
+      const input = document.getElementById("lyricsInput").value.trim();
+      const words = input.split(/\s+/);
+      const resultContainer = document.getElementById("result");
+      let result = "";
+
+      words.forEach(word => {
+        let converted = "";
+        let i = 0;
+        while (i < word.length) {
+          const two = word.substring(i, i + 2);
+          const twoFormatted = two.charAt(0).toUpperCase() + two.charAt(1)?.toLowerCase();
+          const one = word.charAt(i).toUpperCase();
+
+          if (elements[twoFormatted]) {
+            converted += `| ${twoFormatted} `;
+            i += 2;
+          } else if (elements[one]) {
+            converted += `| ${one} `;
+            i += 1;
+          } else {
+            converted += `| ${word.charAt(i)} `;
+            i += 1;
+          }
+        }
+        result += converted + "|\n";
+      });
+
+      resultContainer.textContent = result.trim();
+    }
+  </script>
+</body>
+</html>

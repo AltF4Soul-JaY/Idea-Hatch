@@ -1,4 +1,4 @@
-// Highlight active nav link
+// ✅ Highlight active nav link
 document.querySelectorAll('nav a').forEach(link => {
   const current = location.pathname.split("/").pop();
   if (link.getAttribute("href") === current) {
@@ -6,10 +6,10 @@ document.querySelectorAll('nav a').forEach(link => {
   }
 });
 
-// Auto-set year in footer
+// ✅ Auto-set year in footer
 document.getElementById("year").textContent = new Date().getFullYear();
 
-// Load blog posts on updates.html
+// ✅ Load blog posts if on updates.html
 if (window.location.pathname.includes("updates.html")) {
   fetch("data/updates.json")
     .then(res => res.json())
@@ -17,7 +17,8 @@ if (window.location.pathname.includes("updates.html")) {
       const container = document.getElementById("updates-container");
       posts.forEach(post => {
         const card = document.createElement("div");
-        card.className = "bg-white bg-opacity-5 border border-white/20 rounded-xl p-6 flex gap-6 backdrop-blur-md shadow-md";
+        card.className =
+          "bg-white bg-opacity-5 border border-white/20 rounded-xl p-6 flex gap-6 backdrop-blur-md shadow-md";
         card.innerHTML = `
           <img src="${post.image}" alt="${post.title}" class="w-40 h-40 object-cover rounded-xl" />
           <div class="flex-1">
