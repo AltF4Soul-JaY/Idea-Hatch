@@ -6,6 +6,28 @@
   <title>Idea Hatch — Home</title>
   <script src="https://cdn.tailwindcss.com"></script>
   <link rel="stylesheet" href="styles/style.css" />
+  <!-- Three.js library -->
+  <script src="https://cdn.jsdelivr.net/npm/three@0.153.0/build/three.min.js"></script>
+
+  <!-- Inline CSS for logo animation -->
+  <style>
+    @keyframes floatUniverse {
+      0%, 100% {
+        transform: translateY(0) scale(1);
+        filter: drop-shadow(0 0 10px rgba(255,255,255,0.5));
+      }
+      50% {
+        transform: translateY(-20px) scale(1.05);
+        filter: drop-shadow(0 0 20px rgba(100,150,255,0.7));
+      }
+    }
+    .logo-animate {
+      animation: floatUniverse 5s ease-in-out;
+      box-shadow:
+        0 0 15px rgba(255,255,255,0.6),
+        0 0 30px rgba(100,150,255,0.4);
+    }
+  </style>
 </head>
 <body class="bg-gray-900 text-white font-sans relative">
 
@@ -15,12 +37,12 @@
   <!-- NAVIGATION BAR -->
   <header class="sticky top-0 z-20 bg-gray-900 bg-opacity-70 backdrop-blur-md">
     <nav class="container mx-auto flex justify-between items-center py-4 px-6">
-      <img src="assets/images/logo.jpg" alt="Logo" class="h-10 w-auto rounded-full">
+      <img id="logo" src="assets/images/logo.jpg" alt="Logo" class="h-10 w-auto rounded-full">
       <div class="flex gap-6 text-white text-lg font-medium">
         <a href="index.html">Home</a>
         <a href="about.html">About</a>
         <a href="projects.html">Projects</a>
-        <a href="birthdayblissindex.html">Birthday Bliss</a>
+        <!-- Birthday Bliss link removed -->
         <a href="updates.html">Updates</a>
       </div>
     </nav>
@@ -42,6 +64,9 @@
     <a href="projects.html" class="mt-10 inline-block bg-pink-600 hover:bg-pink-700 text-white px-6 py-3 rounded-full text-lg transition-all duration-300 animate-pop-in">
       See Projects →
     </a>
+
+    <!-- 3D Model Container -->
+    <div id="model-container" class="mt-12 w-full h-64 rounded-2xl shadow-lg"></div>
   </main>
 
   <!-- FOOTER -->
@@ -51,5 +76,52 @@
 
   <!-- SCRIPTS -->
   <script src="scripts/main.js"></script>
+
+  <!-- Three.js and Logo animation setup -->
+  <script>
+    // Logo animation trigger
+    window.addEventListener('load', () => {
+      const logo = document.getElementById('logo');
+      function triggerLogo() {
+        logo.classList.add('logo-animate');
+        setTimeout(() => logo.classList.remove('logo-animate'), 5000);
+      }
+      triggerLogo();
+      setInterval(triggerLogo, 60000);
+    });
+
+    // Three.js scene
+    (function() {
+      const scene = new THREE.Scene();
+      const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+      const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+      const container = document.getElementById('model-container');
+      renderer.setSize(container.clientWidth, container.clientHeight);
+      container.appendChild(renderer.domElement);
+
+      const geometry = new THREE.BoxGeometry();
+      const material = new THREE.MeshNormalMaterial();
+      const cube = new THREE.Mesh(geometry, material);
+      scene.add(cube);
+      camera.position.z = 3;
+
+      window.addEventListener('resize', () => {
+        renderer.setSize(container.clientWidth, container.clientHeight);
+        camera.aspect = container.clientWidth / container.clientHeight;
+        camera.updateProjectionMatrix();
+      });
+
+      function animate() {
+        requestAnimationFrame(animate);
+        cube.rotation.x += 0.01;
+        cube.rotation.y += 0.01;
+        renderer.render(scene, camera);
+      }
+      animate();
+
+      // Footer year
+      document.getElementById('year').textContent = new Date().getFullYear();
+    })();
+  </script>
 </body>
 </html>

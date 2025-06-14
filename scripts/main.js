@@ -31,3 +31,21 @@ if (window.location.pathname.includes("updates.html")) {
       });
     });
 }
+window.addEventListener('load', () => {
+  const logo = document.querySelector('header nav img');
+
+  function triggerLogo() {
+    // add the class to start animation
+    logo.classList.add('logo-animate');
+    // remove it after the animation ends so it can be re‑added later
+    setTimeout(() => {
+      logo.classList.remove('logo-animate');
+    }, 5000);
+  }
+
+  // 1st time on page‑load
+  triggerLogo();
+
+  // then every 60 seconds
+  setInterval(triggerLogo, 60 * 1000);
+});
